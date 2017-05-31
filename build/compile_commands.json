@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/sersadvlad/localrepo/progbase2/labs/lab8/build",
+  "command": "/usr/bin/c++    -I/home/sersadvlad/localrepo/progbase2/labs/lab8/include  -std=c++11 -Werror -Wall -O3 -DNDEBUG   -o CMakeFiles/https_server.dir/main.cpp.o -c /home/sersadvlad/localrepo/progbase2/labs/lab8/main.cpp",
+  "file": "/home/sersadvlad/localrepo/progbase2/labs/lab8/main.cpp"
+},
+{
+  "directory": "/home/sersadvlad/localrepo/progbase2/labs/lab8/build",
+  "command": "/usr/bin/c++    -I/home/sersadvlad/localrepo/progbase2/labs/lab8/include  -std=c++11 -Werror -Wall -O3 -DNDEBUG   -o CMakeFiles/https_server.dir/src/request.cpp.o -c /home/sersadvlad/localrepo/progbase2/labs/lab8/src/request.cpp",
+  "file": "/home/sersadvlad/localrepo/progbase2/labs/lab8/src/request.cpp"
+},
+{
+  "directory": "/home/sersadvlad/localrepo/progbase2/labs/lab8/build",
+  "command": "/usr/bin/c++    -I/home/sersadvlad/localrepo/progbase2/labs/lab8/include  -std=c++11 -Werror -Wall -O3 -DNDEBUG   -o CMakeFiles/https_server.dir/src/director.cpp.o -c /home/sersadvlad/localrepo/progbase2/labs/lab8/src/director.cpp",
+  "file": "/home/sersadvlad/localrepo/progbase2/labs/lab8/src/director.cpp"
+},
+{
+  "directory": "/home/sersadvlad/localrepo/progbase2/labs/lab8/build",
+  "command": "/usr/bin/c++    -I/home/sersadvlad/localrepo/progbase2/labs/lab8/include  -std=c++11 -Werror -Wall -O3 -DNDEBUG   -o CMakeFiles/https_server.dir/src/response.cpp.o -c /home/sersadvlad/localrepo/progbase2/labs/lab8/src/response.cpp",
+  "file": "/home/sersadvlad/localrepo/progbase2/labs/lab8/src/response.cpp"
+},
+{
+  "directory": "/home/sersadvlad/localrepo/progbase2/labs/lab8/build",
+  "command": "/usr/bin/c++    -I/home/sersadvlad/localrepo/progbase2/labs/lab8/include  -std=c++11 -Werror -Wall -O3 -DNDEBUG   -o CMakeFiles/https_server.dir/src/convert.cpp.o -c /home/sersadvlad/localrepo/progbase2/labs/lab8/src/convert.cpp",
+  "file": "/home/sersadvlad/localrepo/progbase2/labs/lab8/src/convert.cpp"
+}
+]

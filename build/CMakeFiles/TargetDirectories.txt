@@ -1,0 +1,3 @@
+/home/sersadvlad/localrepo/progbase2/labs/lab8/build/CMakeFiles/edit_cache.dir
+/home/sersadvlad/localrepo/progbase2/labs/lab8/build/CMakeFiles/rebuild_cache.dir
+/home/sersadvlad/localrepo/progbase2/labs/lab8/build/CMakeFiles/https_server.dir
