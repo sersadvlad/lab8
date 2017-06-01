@@ -18,7 +18,7 @@ Response::Response(Request * request, vector<Director*> directors){
         else if(request->path() == "/favorites") content = convertDirectors(directors);
         else if(request->path().find("/favorites?") != string::npos ||
                 request->path().find("/favorites/") != string::npos) {
-            //content = convertDirectorsByKey(directors, request->key(), request->value());
+            content = convertDirectorsByKey(directors, request->key(), request->value());
             
         }
          else if(request->path() == "/file") content = convertFileInfo(file);
