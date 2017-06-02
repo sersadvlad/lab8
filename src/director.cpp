@@ -26,5 +26,5 @@ string Director::valueByField(string field){
     if(field == "birth") return to_string(_birth);
     if(field == "name") return _name;
     if(field == "sex") return _sex;
-    return "NOT FIELD";
+    return "NOT A FIELD";
 }

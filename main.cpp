@@ -20,7 +20,7 @@ int main(void){
     vector <Director*> directors;
     addDefaultDirectors(directors);
 
-	const int serverPort = 8080;
+	const int serverPort = 8090;
     TcpListener listener;
     NetMessage message(BUFFER_LENGTH);
     try {
@@ -53,12 +53,12 @@ int main(void){
 }
 
 void addDefaultDirectors(vector<Director*> &directors){
-    directors.push_back(new Director(108, "Christopher Nolan", "male", 1970));
-    directors.push_back(new Director(372, "Ben Stiller", "male", 1965));
-    directors.push_back(new Director(45, "Stephen Spielberg", "male", 1946));
-    directors.push_back(new Director(920, "George Lukas", "male", 1967));
-    directors.push_back(new Director(578, "Quentin Tarantino", "male",1963));
-    directors.push_back(new Director(205, "Damien Chazellle", "male", 1985));
+    directors.push_back(new Director(108, "Christopher_Nolan", "male", 1970));
+    directors.push_back(new Director(372, "Ben_Stiller", "male", 1965));
+    directors.push_back(new Director(45, "Stephen_Spielberg", "male", 1946));
+    directors.push_back(new Director(920, "George_Lukas", "male", 1967));
+    directors.push_back(new Director(578, "Quentin_Tarantino", "male",1963));
+    directors.push_back(new Director(205, "Damien_Chazellle", "male", 1985));
 }
 
 void deleteDirectors(vector<Director*> directors){

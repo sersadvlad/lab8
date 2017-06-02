@@ -15,13 +15,30 @@ defines a server response
 \hyperlink{classResponse_aa9b6e391d77fce8daca8bac13730ec8e}{Response} ()\hypertarget{classResponse_aa9b6e391d77fce8daca8bac13730ec8e}{}\label{classResponse_aa9b6e391d77fce8daca8bac13730ec8e}
 
 \begin{DoxyCompactList}\small\item\em default public constructor for \hyperlink{classResponse}{Response} \end{DoxyCompactList}\item 
-\hyperlink{classResponse_a1b15763f59777470903b031d9ef53608}{Response} (string \hyperlink{classResponse_a517690400a7b7091d03e917f335f7f28}{message})
+\hyperlink{classResponse_a3ffc998b0ccf5e17e7a67160a073e739}{Response} (string status, string content, string headers, string cont\+Info)
 \begin{DoxyCompactList}\small\item\em public -\/ constructor for \hyperlink{classResponse}{Response} \end{DoxyCompactList}\item 
 \hyperlink{classResponse_a2a4a6403aaefce73725f17cf63896f84}{$\sim$\+Response} ()\hypertarget{classResponse_a2a4a6403aaefce73725f17cf63896f84}{}\label{classResponse_a2a4a6403aaefce73725f17cf63896f84}
 
 \begin{DoxyCompactList}\small\item\em default public destructor for \hyperlink{classResponse}{Response} \end{DoxyCompactList}\item 
 string \hyperlink{classResponse_a517690400a7b7091d03e917f335f7f28}{message} ()
-\begin{DoxyCompactList}\small\item\em gets message from \hyperlink{classResponse}{Response} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em gets message from \hyperlink{classResponse}{Response} \end{DoxyCompactList}\item 
+void \hyperlink{classResponse_ae2235d80909cf3bb4d3743525bdc9199}{set\+\_\+content} (string content)\hypertarget{classResponse_ae2235d80909cf3bb4d3743525bdc9199}{}\label{classResponse_ae2235d80909cf3bb4d3743525bdc9199}
+
+\begin{DoxyCompactList}\small\item\em setter of content field \end{DoxyCompactList}\item 
+void \hyperlink{classResponse_a0e60a923bc6d4a4235be99659fb86c44}{set\+\_\+status} (string status)\hypertarget{classResponse_a0e60a923bc6d4a4235be99659fb86c44}{}\label{classResponse_a0e60a923bc6d4a4235be99659fb86c44}
+
+\begin{DoxyCompactList}\small\item\em setter of status field \end{DoxyCompactList}\item 
+void \hyperlink{classResponse_a9fdca7bc43fed5013cea7fc9d758fcc6}{set\+\_\+headers} (string headers)\hypertarget{classResponse_a9fdca7bc43fed5013cea7fc9d758fcc6}{}\label{classResponse_a9fdca7bc43fed5013cea7fc9d758fcc6}
+
+\begin{DoxyCompactList}\small\item\em setter of headers field \end{DoxyCompactList}\item 
+void \hyperlink{classResponse_a3a3e9e237bf28e93c2e0980aba4486c8}{set\+\_\+content\+Info} (string content\+Info)\hypertarget{classResponse_a3a3e9e237bf28e93c2e0980aba4486c8}{}\label{classResponse_a3a3e9e237bf28e93c2e0980aba4486c8}
+
+\begin{DoxyCompactList}\small\item\em setter of content\+Info field \end{DoxyCompactList}\item 
+string \hyperlink{classResponse_a2865325ae8ff47265d3acdea92a439f5}{get\+\_\+content} ()\hypertarget{classResponse_a2865325ae8ff47265d3acdea92a439f5}{}\label{classResponse_a2865325ae8ff47265d3acdea92a439f5}
+
+\begin{DoxyCompactList}\small\item\em get content string \end{DoxyCompactList}\item 
+string \hyperlink{classResponse_a65879472be164ebbcf39a6f58310d42c}{To\+String} ()
+\begin{DoxyCompactList}\small\item\em creates string message; \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -30,18 +47,21 @@ defines a server response
 \subsection{Constructor \& Destructor Documentation}
 \index{Response@{Response}!Response@{Response}}
 \index{Response@{Response}!Response@{Response}}
-\subsubsection[{\texorpdfstring{Response(string message)}{Response(string message)}}]{\setlength{\rightskip}{0pt plus 5cm}Response\+::\+Response (
+\subsubsection[{\texorpdfstring{Response(string status, string content, string headers, string cont\+Info)}{Response(string status, string content, string headers, string contInfo)}}]{\setlength{\rightskip}{0pt plus 5cm}Response\+::\+Response (
 \begin{DoxyParamCaption}
-\item[{string}]{message}
+\item[{string}]{status, }
+\item[{string}]{content, }
+\item[{string}]{headers, }
+\item[{string}]{cont\+Info}
 \end{DoxyParamCaption}
-)}\hypertarget{classResponse_a1b15763f59777470903b031d9ef53608}{}\label{classResponse_a1b15763f59777470903b031d9ef53608}
+)}\hypertarget{classResponse_a3ffc998b0ccf5e17e7a67160a073e739}{}\label{classResponse_a3ffc998b0ccf5e17e7a67160a073e739}
 
 
 public -\/ constructor for \hyperlink{classResponse}{Response} 
 
 
 \begin{DoxyParams}{Parameters}
-{\em message} & -\/ response message \\
+{\em fields} & -\/ parts of response message \\
 \hline
 \end{DoxyParams}
 
@@ -60,6 +80,20 @@ gets message from \hyperlink{classResponse}{Response}
 
 \begin{DoxyReturn}{Returns}
 message that contained in \hyperlink{classResponse}{Response} 
+\end{DoxyReturn}
+\index{Response@{Response}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!Response@{Response}}
+\subsubsection[{\texorpdfstring{To\+String()}{ToString()}}]{\setlength{\rightskip}{0pt plus 5cm}string Response\+::\+To\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classResponse_a65879472be164ebbcf39a6f58310d42c}{}\label{classResponse_a65879472be164ebbcf39a6f58310d42c}
+
+
+creates string message; 
+
+\begin{DoxyReturn}{Returns}
+string message 
 \end{DoxyReturn}
 
 
