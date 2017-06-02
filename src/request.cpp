@@ -23,7 +23,7 @@ void Request::set_path(string path){ _path = path; }
 void Request::set_key(string key){ _key = key; } 
 void Request::set_value(string value){ _value = value; } 
 
-//outside class
+
 void setRequestFields(Request * request, string reqStr){
 
     //finding method

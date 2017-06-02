@@ -35,10 +35,10 @@ int main(void){
            Request * req = new Request();
            setRequestFields(req, message.dataAsString());
 
-            //Response * res = new Response(req, directors);
-            Response * res = new Response(processRequest(req, directors));
+            Response * res = new Response();
+            RequestToResponse(req, res, directors);
 
-            message.setDataString(res->message());
+            message.setDataString(res->ToString());
             client->send(message);
             cout << ">> Response sent." << endl;
             delete client;

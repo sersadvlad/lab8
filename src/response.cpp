@@ -1,53 +1,73 @@
 #include <response.h>
 #include <convert.h>
 
-Response::Response(){ _message = ""; }
+Response::Response(){ 
+    _status = "";
+    _content = "";
+    _headers = "";
+    _contentInfo = ""; 
+ }
+
 Response::~Response(){};
-Response::Response(string message){ 
-    _message = message;
+
+Response::Response(string status, string content, string headers, string contInfo){
+    _status = status;
+    _content = content;
+    _headers = headers;
+    _contentInfo = contInfo;
 }
 
-string Response::message(){ return _message; }
+string Response::ToString(){
+    return _status + _contentInfo + _headers + _content;
+}
 
-string processRequest(Request * request, vector<Director*> directors){
+void Response::set_content(string content){
+    _content = content;
+}
+void Response::set_status(string status){
+    _status = status;
+}
+void Response::set_headers(string headers){
+    _headers = headers;
+}
+void Response::set_contentInfo(string contentInfo){
+    _contentInfo = contentInfo;
+}
+
+string Response::get_content(){
+    return _content;
+}
+
+void RequestToResponse(Request * request, Response * response, vector<Director*> directors){
     
     string file = "/home/sersadvlad/localrepo/progbase2/labs/lab8/data/data.txt";
-    string headers = 
-        "Server: MyServer\r\n" 
-        "Connection: close\r\n\r\n";
-    string status = "";
-    string content = "";
-    string contentInfo = "";
+    response->set_headers("Server: MyServer\r\n" 
+        "Connection: close\r\n\r\n") ;
 
     if(request->method() == "GET"){
 
-        if(request->path() == "/") content = ServerInfo_toJson();
-        else if(request->path() == "/favorites") content = DirectorsList_toJson(directors);
+        if(request->path() == "/") response->set_content(ServerInfo_toJson());
+        else if(request->path() == "/favorites") response->set_content(DirectorsList_toJson(directors));
         else if(request->path().find("/favorites?") != string::npos ||
                 request->path().find("/favorites/") != string::npos) {
-            content = DirectorsByKey_toJson(directors, request->key(), request->value());  
-
+            response->set_content(DirectorsByKey_toJson(directors, request->key(), request->value())); 
         }
-         else if(request->path() == "/file") content = FileInfo_toJson(file);
-         else if(request->path() == "/file/data") content = getFileContent(file);
+         else if(request->path() == "/file") response->set_content(FileInfo_toJson(file));
+         else if(request->path() == "/file/data")response->set_content(getFileContent(file));
          else {
-            content = "NOT FOUND";
+            response->set_content("NOT FOUND");
          }
-
-        if(content != "NOT FOUND"){
-            status = "HTTP/1.1 200 OK\r\n";
-            contentInfo = "Content-Type: application/json; charset=utf-8\r\n"
-                          "Content-Length: " + to_string(content.length()) + "\r\n";
+        if(response->get_content() != "NOT FOUND"){
+            response->set_status ("HTTP/1.1 200 OK\r\n");
+            response->set_contentInfo("Content-Type: application/json; charset=utf-8\r\n"
+                          "Content-Length: " + to_string(response->get_content().length()) + "\r\n");
         } else {
-            status = "HTTP/1.1 404 NOT FOUND\r\n";
-            contentInfo = "Content-Type: text; charset=utf-8\r\n"
-                          "Content-Length: " + to_string(content.length()) + "\r\n";
+            response->set_status("HTTP/1.1 404 NOT FOUND\r\n");
+            response->set_contentInfo("Content-Type: text; charset=utf-8\r\n"
+                          "Content-Length: " + to_string(response->get_content().length()) + "\r\n");
         }
 
     } else {
-        status = "HTTP/1.1 400 Bad Request\r\n";
+        response->set_status("HTTP/1.1 400 Bad Request\r\n");
     }
-    string messageStr = status + contentInfo + headers + content;
-
-    return messageStr;
 }

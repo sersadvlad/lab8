@@ -10,6 +10,7 @@
     ],
 	"files.associations": {
 		"slist": "cpp",
-		"iostream": "cpp"
+		"iostream": "cpp",
+		"system_error": "cpp"
 	}
 }
