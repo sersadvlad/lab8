@@ -1,0 +1,54 @@
+\hypertarget{response_8h}{}\section{include/response.h File Reference}
+\label{response_8h}\index{include/response.\+h@{include/response.\+h}}
+
+
+Interface for server response.  
+
+
+{\ttfamily \#include $<$request.\+h$>$}\\*
+{\ttfamily \#include $<$director.\+h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+Include dependency graph for response.\+h\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classResponse}{Response}
+\begin{DoxyCompactList}\small\item\em defines a server response \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{response_8h_ab3b2cbbcc40232a72dd4b649cf3653fb}{process\+Request} (\hyperlink{classRequest}{Request} $\ast$request, vector$<$ \hyperlink{classDirector}{Director} $\ast$ $>$ directors)
+\begin{DoxyCompactList}\small\item\em processes request and forms message string \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for server response. 
+
+
+
+\subsection{Function Documentation}
+\index{response.\+h@{response.\+h}!process\+Request@{process\+Request}}
+\index{process\+Request@{process\+Request}!response.\+h@{response.\+h}}
+\subsubsection[{\texorpdfstring{process\+Request(\+Request $\ast$request, vector$<$ Director $\ast$ $>$ directors)}{processRequest(Request *request, vector< Director * > directors)}}]{\setlength{\rightskip}{0pt plus 5cm}string process\+Request (
+\begin{DoxyParamCaption}
+\item[{{\bf Request} $\ast$}]{request, }
+\item[{vector$<$ {\bf Director} $\ast$ $>$}]{directors}
+\end{DoxyParamCaption}
+)}\hypertarget{response_8h_ab3b2cbbcc40232a72dd4b649cf3653fb}{}\label{response_8h_ab3b2cbbcc40232a72dd4b649cf3653fb}
+
+
+processes request and forms message string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & -\/ input request to process \\
+\hline
+{\em directors} & -\/ list of directors to choose while processing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+message string 
+\end{DoxyReturn}

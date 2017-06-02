@@ -13,19 +13,33 @@
 using namespace std;
 
 /**
-    @brief function to reading file
+    @brief function for reading file
     @param filePath - path to file that will be read
     @return string that represents content of file
 */
-string readFile(string filePath);
 
-string convertServerInfo(void){
+string readFile(string filePath){
+    string buf;
+    string result = "";
+    ifstream myfile (filePath);
+    if (!myfile.is_open()){
+        return "NOT FOUND";
+    }
+    while (!myfile.eof()){
+        getline(myfile, buf);
+        result += buf;
+    }
+    myfile.close();
+    return result;
+}
+
+string ServerInfo_toJson(void){
     json_t * json = json_object();
-    json_object_set_new(json, "title", json_string("Simdre HTTP Server with my favorite film directors"));
-    json_object_set_new(json, "developer",json_string( "Sadrytskyj Serhii"));
-    //get current time
-    time_t seconds = time(0);
-    tm* timeinfo = localtime(&seconds);
+    json_object_set_new(json, "title:", json_string(" HTTP Server with my favorite film directors"));
+    json_object_set_new(json, "author:",json_string( "Sadrytskyj Serhii"));
+    
+    time_t seconds = time(0);    
+    tm* timeinfo = localtime(&seconds);  // current time
     //set current time
     string t = string(asctime(timeinfo));
     const char * correct = t.erase(t.length() - 1, t.length()).c_str();
@@ -37,7 +51,7 @@ string convertServerInfo(void){
     return jsonString;
 }
 
-string convertDirectors(vector<Director*> directors){
+string DirectorsList_toJson(vector<Director*> directors){
     json_t * json = json_array();
     for(Director * director : directors){
         json_t * dr = json_object();
@@ -55,7 +69,7 @@ string convertDirectors(vector<Director*> directors){
     return jsonString;
 }
 
-string convertDirectorsByKey(vector<Director*> directors, string key, string value){
+string DirectorsByKey_toJson (vector<Director*> directors, string key, string value){
     if(directors[0]->valueByField(key) != "NOT FIELD"){
         json_t * json = json_array();
         bool isFound = false;
@@ -83,7 +97,7 @@ string convertDirectorsByKey(vector<Director*> directors, string key, string val
     
 }
 
-string convertFileInfo(string filePath){
+string FileInfo_toJson(string filePath){
     string fileStr = readFile(filePath.c_str());
     if (fileStr == "NOT FOUND") {
         cerr << "Can't open file" << endl;
@@ -100,7 +114,7 @@ string convertFileInfo(string filePath){
     return jsonString;
 }
 
-string convertFileContent(string filePath){
+string getFileContent(string filePath){
 
     vector<double> numbers;
     int count = 0;
@@ -127,25 +141,25 @@ string convertFileContent(string filePath){
         i++;
     }
 
-const char*charArray = fileStr.c_str(); // array of chars
+    const char*charArray = fileStr.c_str(); // array of chars
 
     if(exist == true){
         i = 0;
-        while(charArray[i] != '\0'){
+      while(charArray[i] != '\0'){
 
-                if(isdigit(charArray[i]) || (charArray[i] == '-' && isdigit(charArray[i + 1]))){
-                        num = atof(charArray + i); //(fileStr + i)
-                        numbers.push_back(num); // adding number
+         if(isdigit(charArray[i]) || (charArray[i] == '-' && isdigit(charArray[i + 1]))){
+                num = atof(charArray + i); //(fileStr + i)
+                numbers.push_back(num); // adding number
 
-                        //passing by chars of the number
-                        while(isdigit(charArray[i + 1]) || (charArray[i + 1] == '.' && secondDot == false)){
-                            i++;
-                            if(charArray[i] == '.'){
-                                secondDot = true;
-                            }
-                        }
-                        i++;
-                        secondDot = false;
+                //passing by chars of the number
+                while(isdigit(charArray[i + 1]) || (charArray[i + 1] == '.' && secondDot == false)){
+                    i++;
+                    if(charArray[i] == '.'){
+                        secondDot = true;
+                    }
+                }
+                    i++;
+                    secondDot = false;
                 }
                 else i++;
             }
@@ -172,18 +186,3 @@ const char*charArray = fileStr.c_str(); // array of chars
     return jsonString;
 }
 
-
-string readFile(string filePath){
-    string buf;
-    string result = "";
-    ifstream myfile (filePath);
-    if (!myfile.is_open()){
-        return "NOT FOUND";
-    }
-    while (!myfile.eof()){
-        getline(myfile, buf);
-        result += buf;
-    }
-    myfile.close();
-    return result;
-}

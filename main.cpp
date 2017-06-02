@@ -13,11 +13,13 @@ using namespace progbase::net;
 
 #define BUFFER_LENGTH 10000
 
-vector<Director*> addDirectors(void);
 void deleteDirectors(vector<Director*> directors);
+void addDefaultDirectors(vector<Director*> &directors);
 
 int main(void){
-    vector<Director*> directors = addDirectors();
+    vector <Director*> directors;
+    addDefaultDirectors(directors);
+
 	const int serverPort = 8080;
     TcpListener listener;
     NetMessage message(BUFFER_LENGTH);
@@ -29,8 +31,13 @@ int main(void){
             TcpClient * client = listener.accept();
             client->receive(message);
             cout << ">> Received: " << endl << message.dataAsString() << endl;
-            Request * req = new Request(message.dataAsString());
-            Response * res = new Response(req, directors);
+           // Request * req = new Request(message.dataAsString());
+           Request * req = new Request();
+           setRequestFields(req, message.dataAsString());
+
+            //Response * res = new Response(req, directors);
+            Response * res = new Response(processRequest(req, directors));
+
             message.setDataString(res->message());
             client->send(message);
             cout << ">> Response sent." << endl;
@@ -45,18 +52,18 @@ int main(void){
     return 0;
 }
 
-vector<Director*> addDirectors(void){
-    vector<Director*> directors = {};
+void addDefaultDirectors(vector<Director*> &directors){
     directors.push_back(new Director(108, "Christopher Nolan", "male", 1970));
     directors.push_back(new Director(372, "Ben Stiller", "male", 1965));
     directors.push_back(new Director(45, "Stephen Spielberg", "male", 1946));
     directors.push_back(new Director(920, "George Lukas", "male", 1967));
     directors.push_back(new Director(578, "Quentin Tarantino", "male",1963));
     directors.push_back(new Director(205, "Damien Chazellle", "male", 1985));
-    return directors;
 }
 
 void deleteDirectors(vector<Director*> directors){
-    for(Director *Director : directors) delete Director;
+    for(Director *Director : directors){
+        delete Director;
+    } 
 }
 

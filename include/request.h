@@ -1,6 +1,6 @@
 /**
     @file
-    @brief Wrapper for client request
+    @brief Interface for client request
 */
 #ifndef REQUEST_H
 #define REQUEST_H
@@ -24,11 +24,11 @@ public:
     */
     Request();
 
-    /**
-        @brief public constructor for Request that process string as request
-        @param request - string for processing request
-    */
-    Request(string request);
+    // /**
+    //     @brief public constructor for Request that process string as request
+    //     @param request - string for processing request
+    // */
+    // Request(string request);
 
     /**
         @brief default public destructor for Request
@@ -58,6 +58,33 @@ public:
         @return string that defines specified value in path of Request
     */
     string value();
+
+    /**
+        @brief setter of method field 
+    */
+    void set_method(string method);
+
+    /**
+        @brief setter of path field
+    */
+    void set_path(string path);
+    
+    /**
+        @brief setter of key field
+    */
+    void set_key(string key);
+    
+    /**
+        @brief setter of value field
+    */
+    void set_value(string value);
+    
 };
+
+/**
+    @brief sets request fields according to the request string 
+    @param reqStr - request string
+*/
+void setRequestFields(Request * request, string reqStr);
 
 #endif //REQUEST_H
